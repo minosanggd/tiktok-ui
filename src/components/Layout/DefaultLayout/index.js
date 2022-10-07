@@ -1,13 +1,17 @@
+import classNames from 'classnames/bind';
+import syles from './DefaultLayout.module.scss';
 import Header from '~/components/Layout/components/Header';
 import Sidebar from './Sidebar';
 
+const cx = classNames.bind(syles);
+
 function DefaultLayout({ children }) {
     return (
-        <div>
+        <div className={cx('wrapper')}>
             <Header />
-            <div className="container">
+            <div className={cx('container')}>
                 <Sidebar />
-                <div className="content">{children}</div>
+                <div className={cx('content')}>{children}</div>
             </div>
         </div>
     );
