@@ -1,6 +1,6 @@
 .wrapper {
     min-width: 100px;
-    padding: 9px 16px;
+    padding: 5px 16px;
     border-radius: 4px;
     font-size: 1.6rem;
     font-weight: 700;
@@ -26,6 +26,11 @@
 .icon + .title,
 .title + .icon {
     margin-left: 8px;
+}
+
+.icon {
+    display: inline-block;
+    width: 22px;
 }
 // button types
 
@@ -66,8 +71,8 @@
 
 //Btn sizes
 .normal {
-    min-width: 140px;
-    padding: 9px 16px;
+    min-width: 110px;
+    padding: 5px 16px;
     color: var(--text-color);
     border: 1px solid rgba(22, 24, 35, 0.12);
     // border-color: currentColor;
