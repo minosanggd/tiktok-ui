@@ -116,18 +116,15 @@
 }
 
 .action-btn {
-    padding: 4px 24px;
-    width: 26px;
-    height: 26px;
-    background-color: #fff;
-    border: 0;
-    box-shadow: 0 1px transparent;
+    color: #161823;
+    background-color: transparent;
+    margin-left: 16px;
     cursor: pointer;
 }
 
 .user-avatar {
     cursor: pointer;
-    margin-left: 12px;
+    margin-left: 24px;
     width: 32px;
     object-fit: cover;
     border-radius: 50%;
