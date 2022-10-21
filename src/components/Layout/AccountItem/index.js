@@ -8,6 +8,8 @@ import styles from './AccountItem.module.scss';
 const cx = classNames.bind(styles);
 
 function AccountItem({ data }) {
+    // console.log(data); // Xuất ra Object là result tương ứng
+    // console.log(data?.id);
     return (
         <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
             <Imgage className={cx('avatar')} src={data.avatar} alt={data.full_name} />

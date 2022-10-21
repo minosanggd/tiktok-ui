@@ -5,7 +5,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AccountItem from '~/components/Layout/AccountItem';
-
+import { useDebounce } from '~/hooks';
 import { SearchIcon } from '~/components/Icons';
 
 import classNames from 'classnames/bind';
@@ -18,17 +18,24 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchValue, 500);
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResults([]);
             return;
         }
 
+        // const handlespace = (e) => {
+        //     if (e.target.value[0] !== ' ') {
+        //         setSearchValue(e.target.value);
+        //     }
+        // };
+
         setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResults(res.data);
@@ -37,7 +44,7 @@ function Search() {
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -70,7 +77,17 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => {
+                        let value = e.target.value;
+
+                        // Cách 1:
+                        // if (/^\s*$/.test(value)) value = '';
+
+                        // Cách 2:
+                        if (value.trim() === '') value = '';
+
+                        setSearchValue(value);
+                    }}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
