@@ -6,6 +6,7 @@
     --text-color: #161823;
     --white-color: #fff;
 
+    --font-family: 'IBM Plex Sans', sans-serif;
     //DefaultLayout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
@@ -75,6 +76,9 @@ a[href] {
 
 body {
     .tippy-box {
+        // font-family: 'ProximaNova', sans-serif;
+
+        font-family: var(--font-family);
         border-radius: 8px;
         font-weight: 600;
         font-size: 1.6rem;
