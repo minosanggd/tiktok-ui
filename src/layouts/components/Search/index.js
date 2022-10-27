@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless'; // different import path!
 import classNames from 'classnames/bind';
 
-import * as searchSevices from '~/apiServices/searchServices';
+import * as searchSevices from '~/services/searchService';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/Layout/AccountItem';
+import AccountItem from '~/layouts/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
